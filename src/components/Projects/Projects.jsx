@@ -5,17 +5,21 @@ import styles from "./Projects.module.css";
 import data from "../../data/info.json";
 import { ProjectCard } from "./ProjectCard";
 
-const projectData = data["coding_projects"]
+const projectData = data["coding_projects"];
 
 export const Projects = () => {
   return (
-    <section className={styles.container} id="projects">
-      <h2 className={styles.title}>Projects</h2>
-      <div className={styles.projects}>
-        {projectData.map((project, id) => {
-          return <ProjectCard key={id} project={project} />;
-        })}
-      </div>
-    </section>
+    <>
+      {projectData && projectData.length > 0 && (
+        <section className={styles.container} id="projects">
+          <h2 className={styles.title}>Projects</h2>
+          <div className={styles.projects}>
+            {projectData.map((project, id) => (
+              <ProjectCard key={id} project={project} />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
   );
 };
